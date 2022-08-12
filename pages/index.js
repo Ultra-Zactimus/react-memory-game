@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Card from './card';
+import { useEffect, useState } from "react";
+import Card from '../components/Card';
 
 const cardImages = [
   { "src": "/img/icons-swords.jpg" },
@@ -13,6 +13,8 @@ const cardImages = [
 export default function Home() {
   const [cards, setCards] = useState([]);
   const [turns, setTurns] = useState(0);
+  const [firstPick, setFirstPick] = useState(null);
+  const [secondPick, setSecondPick] = useState(null);
 
   const shuffleCards = () => {
     const shuffledDeck = [...cardImages, ...cardImages]
@@ -26,6 +28,28 @@ export default function Home() {
     setTurns(0)
   }
 
+  const handleChoice = card => {
+    firstPick ? setSecondPick(card) : setFirstPick(card)
+  }
+
+  useEffect(() => {
+    if (firstPick && secondPick) {
+      if (firstPick.src === secondPick.src) {
+        console.log('match')
+        resetTurn()
+      } else {
+        console.log('no match')
+        resetTurn()
+      }
+    }
+  }, [firstPick, secondPick])
+
+  const resetTurn = () => {
+    setFirstPick(null)
+    setSecondPick(null)
+    setTurns(prev => prev + 1)
+  }
+
   return (
     <div className="">
       <h1>Let's Play a Guessing Game!</h1>
@@ -34,7 +58,11 @@ export default function Home() {
 
       <div className="grid">
         {cards.map(card => (
-          <Card key={card.id} card={card} />
+          <Card
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+          />
         ))}
       </div>
     </div>
