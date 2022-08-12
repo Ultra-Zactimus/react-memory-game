@@ -35,10 +35,17 @@ export default function Home() {
   useEffect(() => {
     if (firstPick && secondPick) {
       if (firstPick.src === secondPick.src) {
-        console.log('matching')
+        setCards(prev => {
+          return prev.map(card => {
+            if (card.src === firstPick.src) {
+              return { ...card, matched: true }
+            } else {
+              return card
+            }
+          })
+        })
         resetTurn()
       } else {
-        console.log('not matching')
         resetTurn()
       }
     }
