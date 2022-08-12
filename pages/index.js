@@ -1,4 +1,12 @@
 
+const cardImages = [
+  { "src": "/img/icons-swords" },
+  { "src": "/img/icons-hammer" },
+  { "src": "/img/icons-axe" },
+  { "src": "/img/icons-shield" },
+  { "src": "/img/icons-helmet" },
+  { "src": "/img/icons-scroll" }
+]
 
 export default function Home() {
   return (
