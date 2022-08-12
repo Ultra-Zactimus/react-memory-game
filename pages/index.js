@@ -2,12 +2,12 @@ import { useState } from "react";
 import Card from './card';
 
 const cardImages = [
-  { "src": "/img/icons-swords" },
-  { "src": "/img/icons-hammer" },
-  { "src": "/img/icons-axe" },
-  { "src": "/img/icons-shield" },
-  { "src": "/img/icons-helmet" },
-  { "src": "/img/icons-scroll" }
+  { "src": "/img/icons-swords.jpg" },
+  { "src": "/img/icons-hammer.jpg" },
+  { "src": "/img/icons-axe.jpg" },
+  { "src": "/img/icons-shield.jpg" },
+  { "src": "/img/icons-helmet.jpg" },
+  { "src": "/img/icons-banner.jpg" }
 ]
 
 export default function Home() {
