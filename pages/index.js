@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import Card from '../components/Card';
 
 const cardImages = [
-  { "src": "/img/icons-swords.jpg" },
-  { "src": "/img/icons-hammer.jpg" },
-  { "src": "/img/icons-axe.jpg" },
-  { "src": "/img/icons-shield.jpg" },
-  { "src": "/img/icons-helmet.jpg" },
-  { "src": "/img/icons-banner.jpg" }
+  { "src": "/img/icons-swords.jpg", matched: false },
+  { "src": "/img/icons-hammer.jpg", matched: false },
+  { "src": "/img/icons-axe.jpg", matched: false },
+  { "src": "/img/icons-shield.jpg", matched: false },
+  { "src": "/img/icons-helmet.jpg", matched: false },
+  { "src": "/img/icons-banner.jpg", matched: false }
 ]
 
 export default function Home() {
@@ -35,10 +35,10 @@ export default function Home() {
   useEffect(() => {
     if (firstPick && secondPick) {
       if (firstPick.src === secondPick.src) {
-        console.log('match')
+        console.log('matching')
         resetTurn()
       } else {
-        console.log('no match')
+        console.log('not matching')
         resetTurn()
       }
     }
