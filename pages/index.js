@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Card from './card';
 
 const cardImages = [
   { "src": "/img/icons-swords" },
@@ -30,6 +31,12 @@ export default function Home() {
       <h1>Let's Play a Guessing Game!</h1>
       <p>How good is your memory?</p>
       <button type="button" onClick={shuffleCards}>Start a New Game?</button>
+
+      <div className="grid">
+        {cards.map(card => (
+          <Card key={card.id} card={card} />
+        ))}
+      </div>
     </div>
   )
 }
