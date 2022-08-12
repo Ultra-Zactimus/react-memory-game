@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 const cardImages = [
   { "src": "/img/icons-swords" },
@@ -9,6 +10,8 @@ const cardImages = [
 ]
 
 export default function Home() {
+  const [cards, setCards] = useState([]);
+  const [turns, setTurns] = useState(0);
 
   const shuffleCards = () => {
     const shuffledDeck = [...cardImages, ...cardImages]
@@ -16,14 +19,17 @@ export default function Home() {
       .map((card) => ({
         ...card,
         id: Math.random()
-      }));
+      }))
+
+    setCards(shuffledDeck)
+    setTurns(0)
   }
 
   return (
     <div className="">
       <h1>Let's Play a Guessing Game!</h1>
       <p>How good is your memory?</p>
-      <button>Start a New Game?</button>
+      <button type="button" onClick={shuffleCards}>Start a New Game?</button>
     </div>
   )
 }
