@@ -46,7 +46,7 @@ export default function Home() {
         })
         resetTurn()
       } else {
-        resetTurn()
+        setTimeout(() => resetTurn(), 500)
       }
     }
   }, [firstPick, secondPick])
@@ -59,9 +59,8 @@ export default function Home() {
 
   return (
     <div className="">
-      <h1>Let's Play a Guessing Game!</h1>
-      <p>How good is your memory?</p>
-      <button type="button" onClick={shuffleCards}>Start a New Game?</button>
+      <h2>Let's Play a Guessing Game!</h2>
+      <button type="button" onClick={shuffleCards}>New Game?</button>
 
       <div className="grid">
         {cards.map(card => (
@@ -69,6 +68,7 @@ export default function Home() {
             key={card.id}
             card={card}
             handleChoice={handleChoice}
+            flipped={card === firstPick || card === secondPick || card.matched}
           />
         ))}
       </div>
