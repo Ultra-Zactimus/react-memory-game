@@ -20,9 +20,11 @@ button {
   font-weight: bold;
   cursor: pointer;
   font-size: 1em;
+  transition: 700ms ease-in-out;
 }
 
 button:hover {
-  background: purple;
+  transition: 700ms ease-in-out;
+  background: rgb(123, 0, 56);
   color: #fff;
 }
