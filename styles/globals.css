@@ -28,3 +28,21 @@ button:hover {
   background: rgb(123, 0, 56);
   color: #fff;
 }
+
+.grid {
+  margin: 40px 18em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+  border: 2px solid #fff;
+  border-radius: 6px;
+}
