@@ -9,6 +9,16 @@ const cardImages = [
 ]
 
 export default function Home() {
+
+  const shuffleCards = () => {
+    const shuffledDeck = [...cardImages, ...cardImages]
+      .sort(() => Math.random() - 0.5)
+      .map((card) => ({
+        ...card,
+        id: Math.random()
+      }));
+  }
+
   return (
     <div className="">
       <h1>Let's Play a Guessing Game!</h1>
