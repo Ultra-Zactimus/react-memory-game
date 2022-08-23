@@ -15,6 +15,7 @@ export default function Home() {
   const [turns, setTurns] = useState(0);
   const [firstPick, setFirstPick] = useState(null);
   const [secondPick, setSecondPick] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const shuffleCards = () => {
     const shuffledDeck = [...cardImages, ...cardImages]
@@ -23,7 +24,8 @@ export default function Home() {
         ...card,
         id: Math.random()
       }))
-
+    setFirstPick(null)
+    setSecondPick(null)
     setCards(shuffledDeck)
     setTurns(0)
   }
@@ -34,6 +36,8 @@ export default function Home() {
 
   useEffect(() => {
     if (firstPick && secondPick) {
+      setDisabled(true)
+
       if (firstPick.src === secondPick.src) {
         setCards(prev => {
           return prev.map(card => {
@@ -55,7 +59,12 @@ export default function Home() {
     setFirstPick(null)
     setSecondPick(null)
     setTurns(prev => prev + 1)
+    setDisabled(false)
   }
+
+  useEffect(() => {
+    shuffleCards()
+  }, [])
 
   return (
     <div className="">
@@ -69,9 +78,11 @@ export default function Home() {
             card={card}
             handleChoice={handleChoice}
             flipped={card === firstPick || card === secondPick || card.matched}
+            disabled={disabled}
           />
         ))}
       </div>
+      <p>Turns Taken: {turns}</p>
     </div>
   )
 }
