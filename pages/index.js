@@ -68,7 +68,7 @@ export default function Home() {
 
   return (
     <div className="">
-      <h2>Let's Play a Guessing Game!</h2>
+      <h2>Let&lsquo;s Play a Guessing Game!</h2>
       <button type="button" onClick={shuffleCards}>New Game?</button>
 
       <div className="grid">
