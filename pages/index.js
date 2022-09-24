@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Head from 'next/head';
 import Card from '../components/Card';
 
 const cardImages = [
@@ -67,22 +68,31 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="">
-      <h2>Let&lsquo;s Play a Guessing Game!</h2>
-      <button type="button" onClick={shuffleCards}>New Game?</button>
+    <div>
+      <Head>
+        <title>Memory Game</title>
+        <meta name="description" content="This is a memory card game. Test your skills!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-      <div className="grid">
-        {cards.map(card => (
-          <Card
-            key={card.id}
-            card={card}
-            handleChoice={handleChoice}
-            flipped={card === firstPick || card === secondPick || card.matched}
-            disabled={disabled}
-          />
-        ))}
+      <div className="container">
+        <h1>Let&apos;s Play a Guessing Game!</h1>
+        <button type="button" onClick={shuffleCards}>New Game?</button>
+
+        <div className="grid">
+          {cards.map(card => (
+            <Card
+              key={card.id}
+              card={card}
+              handleChoice={handleChoice}
+              flipped={card === firstPick || card === secondPick || card.matched}
+              disabled={disabled}
+            />
+          ))}
+        </div>
+        <p>Turns Taken: {turns}</p>
       </div>
-      <p>Turns Taken: {turns}</p>
     </div>
   )
 }
