@@ -11,7 +11,7 @@ const Card = ({ card, handleChoice, flipped, disabled }) => {
   return (
     <div className='card'>
       <div className={flipped ? 'flipped' : ""}>
-        <div className="front images">
+        <div className="front image">
           <Image
             src={card.src}
             alt="card front"
